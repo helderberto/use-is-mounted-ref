@@ -2,6 +2,12 @@
   <h1>📦 use-is-mounted-ref</h1>
 
   <p><strong>useIsMountedRef is a React Hook</strong> to check when the component is mounted.</p>
+
+  <!-- prettier-ignore-start -->
+  [![version][version-badge]][package]
+  [![downloads][downloads-badge]][npmtrends]
+  [![MIT License][license-badge]][license]
+  <!-- prettier-ignore-end -->
 </div>
 
 ---
@@ -82,3 +88,12 @@ Report bugs or do suggestions using the [issues](https://github.com/helderburato
 ## License
 
 [MIT License](LICENSE) © [helderburato](https://helderburato.com)
+
+<!-- prettier-ignore-start -->
+[version-badge]: https://img.shields.io/npm/v/use-is-mounted-ref.svg?style=flat-square
+[package]: https://www.npmjs.com/package/use-is-mounted-ref
+[downloads-badge]: https://img.shields.io/npm/dm/use-is-mounted-ref.svg?style=flat-square
+[npmtrends]: http://www.npmtrends.com/use-is-mounted-ref
+[license-badge]: https://img.shields.io/npm/l/use-is-mounted-ref.svg?style=flat-square
+[license]: https://github.com/helderburato/use-is-mounted-ref/blob/master/LICENSE
+<!-- prettier-ignore-end -->

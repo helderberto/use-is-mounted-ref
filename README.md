@@ -18,7 +18,8 @@ Warning: Can only update a mounted or mounting component. This usually means you
 
 ## Usage
 
-To start using the `use-is-mounted-ref` in your project, first install in your project i.e:
+To start using the `use-is-mounted-ref` in your project, first install in your project:
+
 `yarn add use-is-mounted-ref` or `npm install use-is-mounted-ref`
 
 <details open>

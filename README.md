@@ -1,7 +1,7 @@
 <div align="center">
   <h1>📦 use-is-mounted-ref</h1>
 
-  <p>📦 <strong>useIsMountedRef is a React Hook</strong> to check when the component is mounted.</p>
+  <p><strong>useIsMountedRef is a React Hook</strong> to check when the component is mounted.</p>
 </div>
 
 ---

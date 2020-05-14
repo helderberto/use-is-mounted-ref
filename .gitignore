@@ -1,7 +1,11 @@
-node_modules
-*.log
 .DS_Store
+.idea
+npm-debug.log
+yarn-error.log
+node_modules
 dist
-lib
 coverage
-package-lock.json
+settings.json
+*.code-workspace
+yarn.lock
+yarn-error.log

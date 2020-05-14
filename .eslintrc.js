@@ -23,11 +23,14 @@ module.exports = {
   },
   plugins: [
     'react',
-    'prettier'
+    'prettier',
+    'jest',
   ],
   rules: {
-    'prettier/prettier': 'error',
+    "react/jsx-filename-extension": "off",
+    "import/extensions": "off",
     'import/no-unresolved': 'off',
     'no-return-assign': 'off',
+    "prettier/prettier": "error",
   },
 };

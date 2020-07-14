@@ -36,10 +36,10 @@ To start using the `use-is-mounted-ref` in your project, first install in your p
 
 ```jsx
 import { useState, useEffect } from 'react';
-import useIsMounted from 'use-is-mounted-ref';
+import useIsMountedRef from 'use-is-mounted-ref';
 
 function App() {
-  const isMounted = useIsMounted();
+  const isMountedRef = useIsMountedRef();
 
   const initialState = {
     loading: false,
@@ -53,7 +53,7 @@ function App() {
     fetch('https://www.reddit.com/.json')
       .then((response) => response.json())
       .then(({ data }) => {
-        if (isMounted.current) {
+        if (isMountedRef.current) {
           setState((prevState) => {
             return {
               ...prevState,
@@ -64,7 +64,7 @@ function App() {
         }
       })
       .catch((err) => {
-        if (isMounted.current) {
+        if (isMountedRef.current) {
           setState((prevState) => {
             return { ...prevState, loading: false, error: true };
           });

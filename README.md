@@ -6,7 +6,6 @@
 <!-- prettier-ignore-start -->
 [![build][build-badge]][build]
 [![version][version-badge]][package]
-![Bundle Size][bundle-size-badge]
 [![MIT License][license-badge]][license]
 [![downloads][downloads-badge]][npmtrends]
 <!-- prettier-ignore-end -->
@@ -101,5 +100,4 @@ Report bugs or do suggestions using the [issues](https://github.com/helderburato
 [license]: https://github.com/helderburato/use-is-mounted-ref/blob/master/LICENSE
 [build]: https://travis-ci.org/helderburato/use-is-mounted-ref
 [build-badge]: https://travis-ci.org/helderburato/use-is-mounted-ref.svg?branch=master
-[bundle-size-badge]: https://badgen.net/bundlephobia/min/use-is-mounted-ref
 <!-- prettier-ignore-end -->

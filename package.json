@@ -17,7 +17,7 @@
     "test:tsc": "tsc",
     "test:tsc:watch": "tsc --watch",
     "commit": "git-cz",
-    "prepublishOnly": "build"
+    "prepublishOnly": "yarn build"
   },
   "keywords": ["react", "hook", "mounted", "unmounted", "ref"],
   "repository": {

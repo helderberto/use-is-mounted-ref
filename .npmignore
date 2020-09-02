@@ -1,9 +1,0 @@
-node_modules
-.npmignore
-yarn.lock
-README.md
-.idea
-.babelrc
-LICENSE
-package.json
-examples

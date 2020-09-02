@@ -3,11 +3,12 @@
   "description": "📦 useIsMountedRef is a React Hook to check when the component is mounted.",
   "author": "Helder Burato Berto <helder.burato@gmail.com> (https://helderburato.com/)",
   "license": "MIT",
+  "version": "1.0.1",
   "main": "dist/use-is-mounted-ref.cjs.js",
   "module": "dist/use-is-mounted-ref.es.js",
   "jsnext:main": "dist/use-is-mounted-ref.es.js",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
+  "files": ["dist", "LICENSE", "README.md"],
   "scripts": {
     "build": "rm -fr ./dist && rollup -c",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
@@ -16,7 +17,7 @@
     "test:tsc": "tsc",
     "test:tsc:watch": "tsc --watch",
     "commit": "git-cz",
-    "release": "semantic-release"
+    "prepublishOnly": "build"
   },
   "keywords": ["react", "hook", "mounted", "unmounted", "ref"],
   "repository": {
@@ -67,7 +68,6 @@
     "rollup-plugin-replace": "2.2.0",
     "rollup-plugin-typescript2": "0.27.2",
     "rollup-plugin-uglify": "6.0.4",
-    "semantic-release": "17.1.1",
     "ts-jest": "26.3.0",
     "typescript": "4.0.2"
   },

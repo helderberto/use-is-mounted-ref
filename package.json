@@ -9,7 +9,7 @@
   "types": "dist/index.d.ts",
   "files": ["dist"],
   "scripts": {
-    "build": "rm -fr ./dist && rollup -c && yarn test:size",
+    "build": "rm -fr ./dist && rollup -c",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "lint": "eslint --ext .jsx --ext .ts,.tsx src/",
     "test": "jest",

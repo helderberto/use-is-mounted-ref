@@ -7,27 +7,18 @@
   "module": "dist/use-is-mounted-ref.es.js",
   "jsnext:main": "dist/use-is-mounted-ref.es.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
-    "build": "rm -fr ./dist && rollup -c && yarn test:size",
+    "build": "rm -fr ./dist && rollup -c",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "lint": "eslint --ext .jsx --ext .ts,.tsx src/",
     "test": "jest",
-    "test:size": "bundlesize",
     "test:tsc": "tsc",
     "test:tsc:watch": "tsc --watch",
     "commit": "git-cz",
     "release": "semantic-release"
   },
-  "keywords": [
-    "react",
-    "hook",
-    "mounted",
-    "unmounted",
-    "ref"
-  ],
+  "keywords": ["react", "hook", "mounted", "unmounted", "ref"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/helderburato/use-is-mounted-ref.git"
@@ -55,7 +46,6 @@
     "babel-jest": "26.3.0",
     "babel-loader": "8.1.0",
     "babel-preset-minify": "0.5.1",
-    "bundlesize": "0.18.0",
     "commitizen": "4.2.1",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "7.8.1",
@@ -89,19 +79,11 @@
     }
   },
   "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
+    "extends": ["@commitlint/config-conventional"]
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "bundlesize": [
-    {
-      "path": "./dist/use-is-mounted-ref.min.js",
-      "maxSize": "2 kB"
-    }
-  ]
+  }
 }

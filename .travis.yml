@@ -10,5 +10,3 @@ install:
 script:
   - yarn test
   - yarn build
-after_success:
-  - yarn release

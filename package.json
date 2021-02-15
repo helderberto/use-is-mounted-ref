@@ -8,11 +8,7 @@
   "module": "dist/use-is-mounted-ref.es.js",
   "jsnext:main": "dist/use-is-mounted-ref.es.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "LICENSE",
-    "README.md"
-  ],
+  "files": ["dist", "LICENSE", "README.md"],
   "scripts": {
     "lint": "eslint --max-warnings=0",
     "lint:fix": "yarn lint --fix",
@@ -25,13 +21,7 @@
     "postinstall": "husky install",
     "prepublishOnly": "yarn build"
   },
-  "keywords": [
-    "react",
-    "hook",
-    "mounted",
-    "unmounted",
-    "ref"
-  ],
+  "keywords": ["react", "hook", "mounted", "unmounted", "ref"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/helderburato/use-is-mounted-ref.git"
@@ -84,19 +74,10 @@
     "typescript": "4.1.5"
   },
   "lint-staged": {
-    "*.{ts,tsx,json}": [
-      "prettier --write .",
-      "git add"
-    ],
-    "*.ts": [
-      "eslint --fix",
-      "git add",
-      "jest --bail --findRelatedTests"
-    ]
+    "src/**/*.{ts,tsx,json,js}": ["prettier --write ."],
+    "src/**/*.{ts,js}": ["eslint --fix", "jest --bail --findRelatedTests"]
   },
   "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
+    "extends": ["@commitlint/config-conventional"]
   }
 }

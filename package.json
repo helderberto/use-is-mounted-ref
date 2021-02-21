@@ -8,7 +8,11 @@
   "module": "dist/use-is-mounted-ref.es.js",
   "jsnext:main": "dist/use-is-mounted-ref.es.js",
   "types": "dist/index.d.ts",
-  "files": ["dist", "LICENSE", "README.md"],
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "lint": "eslint --max-warnings=0",
     "lint:fix": "yarn lint --fix",
@@ -21,7 +25,13 @@
     "postinstall": "husky install",
     "prepublishOnly": "yarn build"
   },
-  "keywords": ["react", "hook", "mounted", "unmounted", "ref"],
+  "keywords": [
+    "react",
+    "hook",
+    "mounted",
+    "unmounted",
+    "ref"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/helderburato/use-is-mounted-ref.git"
@@ -34,12 +44,12 @@
     "react": "^16.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.12.16",
+    "@babel/core": "7.12.17",
     "@babel/polyfill": "7.12.1",
-    "@babel/preset-env": "7.12.16",
+    "@babel/preset-env": "7.12.17",
     "@babel/preset-react": "7.12.13",
     "@babel/register": "7.12.13",
-    "@babel/runtime": "7.12.13",
+    "@babel/runtime": "7.12.18",
     "@commitlint/cli": "11.0.0",
     "@commitlint/config-conventional": "11.0.0",
     "@testing-library/react-hooks": "5.0.3",
@@ -52,9 +62,9 @@
     "commitizen": "4.2.3",
     "eslint": "7.20.0",
     "eslint-config-airbnb": "18.2.1",
-    "eslint-config-prettier": "7.2.0",
+    "eslint-config-prettier": "8.0.0",
     "eslint-plugin-import": "2.22.1",
-    "eslint-plugin-jest": "24.1.3",
+    "eslint-plugin-jest": "24.1.5",
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-prettier": "3.3.1",
     "eslint-plugin-react": "7.22.0",
@@ -68,16 +78,23 @@
     "react-test-renderer": "17.0.1",
     "rollup": "2.39.0",
     "rollup-plugin-replace": "2.2.0",
-    "rollup-plugin-typescript2": "0.29.0",
+    "rollup-plugin-typescript2": "0.30.0",
     "rollup-plugin-uglify": "6.0.4",
     "ts-jest": "26.5.1",
     "typescript": "4.1.5"
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx,json,js}": ["prettier --write ."],
-    "src/**/*.{ts,js}": ["eslint --fix", "jest --bail --findRelatedTests"]
+    "src/**/*.{ts,tsx,json,js}": [
+      "prettier --write ."
+    ],
+    "src/**/*.{ts,js}": [
+      "eslint --fix",
+      "jest --bail --findRelatedTests"
+    ]
   },
   "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }

@@ -22,7 +22,6 @@
     "test:tsc": "tsc",
     "test:tsc:watch": "tsc --watch",
     "commit": "git-cz",
-    "postinstall": "husky install",
     "prepublishOnly": "yarn build"
   },
   "keywords": [

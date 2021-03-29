@@ -98,6 +98,6 @@ Report bugs or do suggestions using the [issues](https://github.com/helderburato
 [npmtrends]: http://www.npmtrends.com/use-is-mounted-ref
 [license-badge]: https://img.shields.io/npm/l/use-is-mounted-ref.svg?style=flat-square
 [license]: https://github.com/helderburato/use-is-mounted-ref/blob/master/LICENSE
-[build]: https://travis-ci.org/helderburato/use-is-mounted-ref
-[build-badge]: https://travis-ci.org/helderburato/use-is-mounted-ref.svg?branch=master
+[build]: https://github.com/helderburato/use-is-mounted-ref/actions
+[build-badge]: https://github.com/helderburato/use-is-mounted-ref/actions/workflows/ci.yml/badge.svg
 <!-- prettier-ignore-end -->

@@ -1,0 +1,32 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: eslint
+    versions:
+    - 7.25.0
+  - dependency-name: "@babel/preset-react"
+    versions:
+    - 7.13.13
+  - dependency-name: rollup
+    versions:
+    - 2.42.3
+  - dependency-name: react-test-renderer
+    versions:
+    - 17.0.2
+  - dependency-name: react-dom
+    versions:
+    - 17.0.2
+  - dependency-name: react
+    versions:
+    - 17.0.2
+  - dependency-name: eslint-plugin-react
+    versions:
+    - 7.23.0
+  - dependency-name: "@babel/preset-env"
+    versions:
+    - 7.13.10

@@ -14,6 +14,19 @@
 
 ---
 
+## Table of Contents
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [Motivation](#motivation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Bugs and Sugestions](#bugs-and-sugestions)
+- [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Motivation
 
 - Avoid memory leaks setting states when component are unmounted;

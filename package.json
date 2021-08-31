@@ -51,7 +51,7 @@
     "@babel/runtime": "7.15.3",
     "@commitlint/cli": "13.1.0",
     "@commitlint/config-conventional": "13.1.0",
-    "@testing-library/react-hooks": "7.0.1",
+    "@testing-library/react-hooks": "7.0.2",
     "@types/jest": "27.0.1",
     "@types/react": "17.0.19",
     "babel-eslint": "10.1.0",

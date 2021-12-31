@@ -935,10 +935,10 @@
     "@babel/plugin-transform-react-jsx-development" "^7.16.5"
     "@babel/plugin-transform-react-pure-annotations" "^7.16.5"
 
-"@babel/register@7.16.5":
-  version "7.16.5"
-  resolved "https://registry.yarnpkg.com/@babel/register/-/register-7.16.5.tgz#657d28b7ca68190de8f6159245b5ed1cfa181640"
-  integrity sha512-NpluD+cToBiZiDsG3y9rtIcqDyivsahpaM9csfyfiq1qQWduSmihUZ+ruIqqSDGjZKZMJfgAElo9x2YWlOQuRw==
+"@babel/register@7.16.7":
+  version "7.16.7"
+  resolved "https://registry.yarnpkg.com/@babel/register/-/register-7.16.7.tgz#e7b3a6015d1646677538672106bdb3a0b4a07657"
+  integrity sha512-Ft+cuxorVxFj4RrPDs9TbJNE7ZbuJTyazUC6jLWRvBQT/qIDZPMe7MHgjlrA+11+XDLh+I0Pnx7sxPp4LRhzcA==
   dependencies:
     clone-deep "^4.0.1"
     find-cache-dir "^2.0.0"
@@ -1014,10 +1014,10 @@
     resolve-global "1.0.0"
     yargs "^17.0.0"
 
-"@commitlint/config-conventional@16.0.0":
-  version "16.0.0"
-  resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-16.0.0.tgz#f42d9e1959416b5e691c8b5248fc2402adb1fc03"
-  integrity sha512-mN7J8KlKFn0kROd+q9PB01sfDx/8K/R25yITspL1No8PB4oj9M1p77xWjP80hPydqZG9OvQq+anXK3ZWeR7s3g==
+"@commitlint/config-conventional@15.0.0":
+  version "15.0.0"
+  resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-15.0.0.tgz#3bf1adf319e3b431de12ba82dc399524038b2d8f"
+  integrity sha512-eZBRL8Lk3hMNHp1wUMYj0qrZQEsST1ai7KHR8J1IDD9aHgT7L2giciibuQ+Og7vxVhR5WtYDvh9xirXFVPaSkQ==
   dependencies:
     conventional-changelog-conventionalcommits "^4.3.1"
 

@@ -47,7 +47,7 @@
     "@babel/polyfill": "7.12.1",
     "@babel/preset-env": "7.16.5",
     "@babel/preset-react": "7.16.5",
-    "@babel/register": "7.16.5",
+    "@babel/register": "7.16.7",
     "@babel/runtime": "7.16.5",
     "@commitlint/cli": "16.0.1",
     "@commitlint/config-conventional": "15.0.0",

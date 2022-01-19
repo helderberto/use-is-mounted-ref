@@ -3,7 +3,7 @@
   "description": "📦 useIsMountedRef is a React Hook to check when the component is mounted.",
   "author": "Helder Burato Berto <helder.burato@gmail.com> (https://helderburato.com/)",
   "license": "MIT",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "main": "dist/use-is-mounted-ref.cjs.js",
   "module": "dist/use-is-mounted-ref.es.js",
   "jsnext:main": "dist/use-is-mounted-ref.es.js",

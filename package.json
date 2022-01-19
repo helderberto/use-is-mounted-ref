@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/helderburato/use-is-mounted-ref#readme",
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": ">=16.0.0"
   },
   "devDependencies": {
     "@babel/core": "7.16.7",

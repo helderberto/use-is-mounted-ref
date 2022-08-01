@@ -995,14 +995,7 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@7.18.6":
-  version "7.18.6"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.18.6.tgz#6a1ef59f838debd670421f8c7f2cbb8da9751580"
-  integrity sha512-t9wi7/AW6XtKahAe20Yw0/mMljKq0B1r2fPdvaAdV/KPDZewFXdaaa6K7lxmZBZ8FBNpCiAT6iHPmd6QO9bKfQ==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
-"@babel/runtime@^7.10.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.18.9", "@babel/runtime@^7.8.4":
+"@babel/runtime@7.18.9", "@babel/runtime@^7.10.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.18.9", "@babel/runtime@^7.8.4":
   version "7.18.9"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.18.9.tgz#b4fcfce55db3d2e5e080d2490f608a3b9f407f4a"
   integrity sha512-lkqXDcvlFT5rvEjiu6+QYO+1GXrEHRo2LOtS7E4GtX5ESIZOgepqsZBVIj6Pv+a6zqsya9VCgiK1KAK4BvJDAw==
@@ -3206,10 +3199,10 @@ eslint-plugin-import@2.25.4:
     resolve "^1.20.0"
     tsconfig-paths "^3.12.0"
 
-eslint-plugin-jest@26.6.0:
-  version "26.6.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-26.6.0.tgz#546804fa42da75d7d58d4d3b278d5186abd3f6c0"
-  integrity sha512-f8n46/97ZFdU4KqeQYqO8AEVGIhHWvkpgNBWHH3jrM28/y8llnbf3IjfIKv6p2pZIMinK1PCqbbROxs9Eud02Q==
+eslint-plugin-jest@26.7.0:
+  version "26.7.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-26.7.0.tgz#41d405ac9143e1284a3401282db47ed459436778"
+  integrity sha512-/YNitdfG3o3cC6juZziAdkk6nfJt01jXVfj4AgaYVLs7bupHzRDL5K+eipdzhDXtQsiqaX1TzfwSuRlEgeln1A==
   dependencies:
     "@typescript-eslint/utils" "^5.10.0"
 

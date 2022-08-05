@@ -1,7 +1,7 @@
 {
   "name": "use-is-mounted-ref",
   "description": "📦 useIsMountedRef is a React Hook to check when the component is mounted.",
-  "author": "Helder Burato Berto <helder.burato@gmail.com> (https://helderburato.com/)",
+  "author": "Helder B. Berto <helder.burato@gmail.com> (https://helderberto.com/)",
   "license": "MIT",
   "version": "1.5.0",
   "main": "dist/use-is-mounted-ref.cjs.js",
@@ -33,12 +33,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/helderburato/use-is-mounted-ref.git"
+    "url": "git+https://github.com/helderberto/use-is-mounted-ref.git"
   },
   "bugs": {
-    "url": "https://github.com/helderburato/use-is-mounted-ref/issues"
+    "url": "https://github.com/helderberto/use-is-mounted-ref/issues"
   },
-  "homepage": "https://github.com/helderburato/use-is-mounted-ref#readme",
+  "homepage": "https://github.com/helderberto/use-is-mounted-ref#readme",
   "peerDependencies": {
     "react": ">=16.0.0"
   },

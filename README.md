@@ -98,11 +98,11 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 ## Bugs and Sugestions
 
-Report bugs or do suggestions using the [issues](https://github.com/helderburato/use-is-mounted-ref/issues).
+Report bugs or do suggestions using the [issues](https://github.com/helderberto/use-is-mounted-ref/issues).
 
 ## License
 
-[MIT License](LICENSE) © [helderburato](https://helderburato.com)
+[MIT License](LICENSE) © [helderberto](https://helderberto.com)
 
 <!-- prettier-ignore-start -->
 [version-badge]: https://img.shields.io/npm/v/use-is-mounted-ref.svg?style=flat-square
@@ -110,7 +110,7 @@ Report bugs or do suggestions using the [issues](https://github.com/helderburato
 [downloads-badge]: https://img.shields.io/npm/dm/use-is-mounted-ref.svg?style=flat-square
 [npmtrends]: http://www.npmtrends.com/use-is-mounted-ref
 [license-badge]: https://img.shields.io/npm/l/use-is-mounted-ref.svg?style=flat-square
-[license]: https://github.com/helderburato/use-is-mounted-ref/blob/master/LICENSE
-[build]: https://github.com/helderburato/use-is-mounted-ref/actions
-[build-badge]: https://github.com/helderburato/use-is-mounted-ref/actions/workflows/ci.yml/badge.svg
+[license]: https://github.com/helderberto/use-is-mounted-ref/blob/master/LICENSE
+[build]: https://github.com/helderberto/use-is-mounted-ref/actions
+[build-badge]: https://github.com/helderberto/use-is-mounted-ref/actions/workflows/ci.yml/badge.svg
 <!-- prettier-ignore-end -->

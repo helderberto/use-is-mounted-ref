@@ -59,7 +59,7 @@
     "babel-loader": "9.0.1",
     "babel-preset-minify": "0.5.2",
     "commitizen": "4.2.5",
-    "eslint": "8.26.0",
+    "eslint": "8.27.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import": "2.25.4",

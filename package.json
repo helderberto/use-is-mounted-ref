@@ -45,7 +45,7 @@
   "devDependencies": {
     "@babel/core": "7.19.6",
     "@babel/polyfill": "7.12.1",
-    "@babel/preset-env": "7.19.4",
+    "@babel/preset-env": "7.20.2",
     "@babel/preset-react": "7.18.6",
     "@babel/register": "7.18.9",
     "@babel/runtime": "7.19.0",
@@ -56,7 +56,7 @@
     "@types/react": "18.0.24",
     "babel-eslint": "10.1.0",
     "babel-jest": "29.2.2",
-    "babel-loader": "9.0.1",
+    "babel-loader": "9.1.0",
     "babel-preset-minify": "0.5.2",
     "commitizen": "4.2.5",
     "eslint": "8.26.0",

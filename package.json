@@ -56,7 +56,7 @@
     "@types/react": "18.0.24",
     "babel-eslint": "10.1.0",
     "babel-jest": "29.2.2",
-    "babel-loader": "9.0.1",
+    "babel-loader": "9.1.0",
     "babel-preset-minify": "0.5.2",
     "commitizen": "4.2.5",
     "eslint": "8.26.0",

@@ -1097,10 +1097,10 @@
     resolve-global "1.0.0"
     yargs "^17.0.0"
 
-"@commitlint/config-conventional@17.4.2":
-  version "17.4.2"
-  resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-17.4.2.tgz#671f7febfcfef90ec11b122a659c6be25e11c19e"
-  integrity sha512-JVo1moSj5eDMoql159q8zKCU8lkOhQ+b23Vl3LVVrS6PXDLQIELnJ34ChQmFVbBdSSRNAbbXnRDhosFU+wnuHw==
+"@commitlint/config-conventional@17.4.0":
+  version "17.4.0"
+  resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-17.4.0.tgz#9188d793886d8a1c633834602f06a642dd16ed64"
+  integrity sha512-G4XBf45J4ZMspO4NwBFzY3g/1Kb+B42BcIxeikF8wucQxcyxcmhRdjeQpRpS1XEcBq5pdtEEQFipuB9IuiNFhw==
   dependencies:
     conventional-changelog-conventionalcommits "^5.0.0"
 
@@ -4145,7 +4145,7 @@ is-callable@^1.2.4:
   resolved "https://registry.yarnpkg.com/is-callable/-/is-callable-1.2.4.tgz#47301d58dd0259407865547853df6d61fe471945"
   integrity sha512-nsuwtxZfMX67Oryl9LCQ+upnC0Z0BgpwntpS89m1H/TLF0zNfzfLMV/9Wa/6MZsj0acpEjAO0KF1xT6ZdLl95w==
 
-is-core-module@^2.11.0, is-core-module@^2.2.0, is-core-module@^2.9.0:
+is-core-module@^2.11.0, is-core-module@^2.9.0:
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.11.0.tgz#ad4cb3e3863e814523c96f3f58d26cc570ff0144"
   integrity sha512-RRjxlvLDkD1YJwDbroBHMb+cukurkDWNyHx7D3oNB5x9rb5ogcksMC5wHCadcXoo67gVr/+3GFySh3134zi6rw==
@@ -6725,10 +6725,10 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typescript@4.9.4, typescript@^4.6.4:
-  version "4.9.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.4.tgz#a2a3d2756c079abda241d75f149df9d561091e78"
-  integrity sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==
+typescript@4.9.5, typescript@^4.6.4:
+  version "4.9.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
+  integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
 
 uglify-js@^3.4.9:
   version "3.13.3"

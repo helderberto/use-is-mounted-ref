@@ -1097,10 +1097,10 @@
     resolve-global "1.0.0"
     yargs "^17.0.0"
 
-"@commitlint/config-conventional@17.4.0":
-  version "17.4.0"
-  resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-17.4.0.tgz#9188d793886d8a1c633834602f06a642dd16ed64"
-  integrity sha512-G4XBf45J4ZMspO4NwBFzY3g/1Kb+B42BcIxeikF8wucQxcyxcmhRdjeQpRpS1XEcBq5pdtEEQFipuB9IuiNFhw==
+"@commitlint/config-conventional@17.6.1":
+  version "17.6.1"
+  resolved "https://registry.yarnpkg.com/@commitlint/config-conventional/-/config-conventional-17.6.1.tgz#ab07c82c88f99ffee89ae321f1f49f1798127fbb"
+  integrity sha512-ng/ybaSLuTCH9F+7uavSOnEQ9EFMl7lHEjfAEgRh1hwmEe8SpLKpQeMo2aT1IWvHaGMuTb+gjfbzoRf2IR23NQ==
   dependencies:
     conventional-changelog-conventionalcommits "^5.0.0"
 

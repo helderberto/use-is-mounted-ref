@@ -15,14 +15,14 @@
   ],
   "scripts": {
     "lint": "eslint --max-warnings=0",
-    "lint:fix": "yarn lint --fix",
+    "lint:fix": "npm run lint --fix",
     "format": "prettier --write 'src/**/*.{js,ts,tsx}'",
     "build": "rm -fr ./dist && rollup -c",
     "test": "jest",
     "test:tsc": "tsc",
     "test:tsc:watch": "tsc --watch",
     "commit": "git-cz",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "react",

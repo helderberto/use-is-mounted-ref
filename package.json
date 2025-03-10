@@ -49,7 +49,7 @@
     "@babel/preset-react": "7.23.3",
     "@babel/register": "7.18.9",
     "@babel/runtime": "7.20.13",
-    "@commitlint/cli": "19.6.0",
+    "@commitlint/cli": "19.8.0",
     "@commitlint/config-conventional": "17.4.0",
     "@testing-library/react-hooks": "8.0.1",
     "@types/jest": "27.4.1",

@@ -43,7 +43,7 @@
     "react": ">=16.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.24.6",
+    "@babel/core": "7.27.7",
     "@babel/polyfill": "7.12.1",
     "@babel/preset-env": "7.20.2",
     "@babel/preset-react": "7.23.3",

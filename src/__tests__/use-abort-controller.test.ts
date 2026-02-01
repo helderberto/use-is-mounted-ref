@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react';
 
 import { useAbortController } from '../use-abort-controller';
 
@@ -31,7 +31,7 @@ describe('useAbortController', () => {
 
   it('should call abort listener on unmount', () => {
     const { result, unmount } = renderHook(() => useAbortController());
-    const abortHandler = jest.fn();
+    const abortHandler = vi.fn();
 
     result.current.signal.addEventListener('abort', abortHandler);
 

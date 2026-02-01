@@ -1,9 +1,9 @@
-/* eslint-disable global-require */
-import replace from 'rollup-plugin-replace';
-import { uglify } from 'rollup-plugin-uglify';
-import typescript from 'rollup-plugin-typescript2';
+import replace from '@rollup/plugin-replace';
+import terser from '@rollup/plugin-terser';
+import typescript from '@rollup/plugin-typescript';
+import { readFileSync } from 'fs';
 
-const pkg = require('./package.json');
+const pkg = JSON.parse(readFileSync('./package.json', 'utf-8'));
 
 const mergeAll = (objs) => Object.assign({}, ...objs);
 
@@ -22,7 +22,7 @@ const globals = { react: 'React' };
 
 const commonPlugins = [
   typescript({
-    typescript: require('typescript'),
+    sourceMap: true,
   }),
 ];
 
@@ -45,6 +45,7 @@ const umdConfig = mergeAll([
         format: 'umd',
         name: 'useIsMountedRef',
         globals,
+        sourcemap: true,
       },
     ]),
     external: Object.keys(pkg.peerDependencies || {}),
@@ -58,6 +59,7 @@ const devUmdConfig = mergeAll([
     plugins: umdConfig.plugins.concat(
       replace({
         'process.env.NODE_ENV': JSON.stringify('development'),
+        preventAssignment: true,
       }),
     ),
   },
@@ -78,8 +80,9 @@ const prodUmdConfig = mergeAll([
     plugins: umdConfig.plugins.concat(
       replace({
         'process.env.NODE_ENV': JSON.stringify('production'),
+        preventAssignment: true,
       }),
-      uglify({
+      terser({
         compress: {
           pure_getters: true,
           unsafe: true,

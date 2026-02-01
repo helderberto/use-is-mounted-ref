@@ -1,7 +1,7 @@
 <div align="center">
   <h1>📦 use-is-mounted-ref</h1>
 
-  <p><strong>useIsMountedRef is a React Hook</strong> to check when the component is mounted.</p>
+  <p><strong>React Hooks for mount state tracking and auto-cleanup with AbortController</strong></p>
 
 <!-- prettier-ignore-start -->
 [![build][build-badge]][build]
@@ -20,7 +20,11 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Motivation](#motivation)
-- [Usage](#usage)
+- [Installation](#installation)
+- [Hooks](#hooks)
+  - [useIsMountedRef](#useismountedref)
+  - [useAbortController](#useabortcontroller)
+- [Migration from v1 to v2](#migration-from-v1-to-v2)
 - [Component Lifecycle Overview](#component-lifecycle-overview)
 - [Contributing](#contributing)
 - [Bugs and Sugestions](#bugs-and-sugestions)
@@ -30,68 +34,139 @@
 
 ## Motivation
 
-- Avoid memory leaks setting states when component are unmounted;
-- Control when component already mounted;
+- Avoid memory leaks setting states when component are unmounted
+- Automatically cancel fetch requests on unmount with AbortController
+- Control when component is mounted
 - Common error when setting state to unmounted component:
 
 ```js
 Warning: Can only update a mounted or mounting component. This usually means you called setState, replaceState, or forceUpdate on an unmounted component. This is a no-op.
 ```
 
-## Usage
+## Installation
 
-To start using the `use-is-mounted-ref` in your project, first install in your project:
+```bash
+yarn add use-is-mounted-ref
+# or
+npm install use-is-mounted-ref
+```
 
-`yarn add use-is-mounted-ref` or `npm install use-is-mounted-ref`
+## Hooks
 
-<details open>
-<summary><strong>Avoid set state when unmounted component:</strong></summary>
+### useIsMountedRef
+
+Track component mount state with a ref.
+
+**Example: Avoid setState when unmounted**
 
 ```jsx
 import { useState, useEffect } from 'react';
-import useIsMountedRef from 'use-is-mounted-ref';
+import { useIsMountedRef } from 'use-is-mounted-ref';
 
 function App() {
   const isMountedRef = useIsMountedRef();
-
-  const initialState = {
-    loading: false,
+  const [state, setState] = useState({
+    loading: true,
     error: false,
     data: [],
-  };
-
-  const [state, setState] = useState(initialState);
+  });
 
   useEffect(() => {
-    fetch('https://www.reddit.com/.json')
+    fetch('https://api.example.com/data')
       .then((response) => response.json())
       .then(({ data }) => {
         if (isMountedRef.current) {
-          setState((prevState) => {
-            return {
-              ...prevState,
-              loading: false,
-              data,
-            };
-          });
+          setState((prev) => ({ ...prev, loading: false, data }));
         }
       })
       .catch((err) => {
         if (isMountedRef.current) {
-          setState((prevState) => {
-            return { ...prevState, loading: false, error: true };
-          });
+          setState((prev) => ({ ...prev, loading: false, error: true }));
         }
       });
-  }, []);
+  }, [isMountedRef]);
 
   return state.loading ? 'Loading...' : 'Found Data!';
 }
-
-export default App;
 ```
 
-</details>
+### useAbortController
+
+Automatically abort fetch requests and async operations on unmount.
+
+**Example: Auto-cancel fetch on unmount**
+
+```jsx
+import { useState, useEffect } from 'react';
+import { useAbortController } from 'use-is-mounted-ref';
+
+function App() {
+  const abortController = useAbortController();
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    fetch('https://api.example.com/data', {
+      signal: abortController.signal,
+    })
+      .then((response) => response.json())
+      .then(setData)
+      .catch((err) => {
+        if (err.name !== 'AbortError') {
+          console.error(err);
+        }
+      });
+  }, [abortController]);
+
+  return <div>{data ? 'Loaded!' : 'Loading...'}</div>;
+}
+```
+
+**Example: Combine both hooks**
+
+```jsx
+import { useState, useEffect } from 'react';
+import { useIsMountedRef, useAbortController } from 'use-is-mounted-ref';
+
+function App() {
+  const isMountedRef = useIsMountedRef();
+  const abortController = useAbortController();
+  const [state, setState] = useState({ loading: true, data: null });
+
+  useEffect(() => {
+    fetch('https://api.example.com/data', {
+      signal: abortController.signal,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (isMountedRef.current) {
+          setState({ loading: false, data });
+        }
+      })
+      .catch((err) => {
+        if (err.name !== 'AbortError' && isMountedRef.current) {
+          setState({ loading: false, data: null });
+        }
+      });
+  }, [abortController, isMountedRef]);
+
+  return state.loading ? 'Loading...' : 'Loaded!';
+}
+```
+
+## Migration from v1 to v2
+
+**Breaking change:** Default export replaced with named exports.
+
+```diff
+- import useIsMountedRef from 'use-is-mounted-ref';
++ import { useIsMountedRef } from 'use-is-mounted-ref';
+```
+
+New hook available:
+
+```js
+import { useAbortController } from 'use-is-mounted-ref';
+```
 
 ## Component Lifecycle Overview
 

@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 
-import useIsMountedRef from '../use-is-mounted-ref';
+import { useIsMountedRef } from '../use-is-mounted-ref';
 
 describe('useIsMountedRef', () => {
   it('shallow validate if useIsMountedRef is defined', () => {

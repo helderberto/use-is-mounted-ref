@@ -1,3 +1,2 @@
-import useIsMountedRef from './use-is-mounted-ref';
-
-export default useIsMountedRef;
+export { useIsMountedRef } from './use-is-mounted-ref';
+export { useAbortController } from './use-abort-controller';

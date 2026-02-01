@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 
-function useIsMountedRef(): { readonly current: boolean } {
+export function useIsMountedRef(): { readonly current: boolean } {
   const isMountedRef = useRef(false);
 
   useEffect(() => {
@@ -13,5 +13,3 @@ function useIsMountedRef(): { readonly current: boolean } {
 
   return isMountedRef;
 }
-
-export default useIsMountedRef;

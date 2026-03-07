@@ -57,7 +57,7 @@
     "@babel/preset-react": "7.23.3",
     "@babel/register": "7.18.9",
     "@babel/runtime": "7.28.6",
-    "@commitlint/cli": "19.6.0",
+    "@commitlint/cli": "20.4.3",
     "@commitlint/config-conventional": "17.4.0",
     "@rollup/plugin-replace": "6.0.3",
     "@rollup/plugin-terser": "1.0.0",

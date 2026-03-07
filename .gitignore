@@ -5,7 +5,9 @@ yarn-error.log
 node_modules
 dist
 coverage
-settings.json
 *.code-workspace
 yarn.lock
 yarn-error.log
+
+# Claude
+.claude/settings.local.json

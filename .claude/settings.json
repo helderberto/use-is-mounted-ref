@@ -11,6 +11,10 @@
           {
             "type": "command",
             "command": "npm run format"
+          },
+          {
+            "type": "command",
+            "command": "npm test"
           }
         ]
       }

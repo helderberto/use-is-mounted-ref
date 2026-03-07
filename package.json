@@ -69,7 +69,7 @@
     "@vitest/coverage-v8": "^4.0.18",
     "@vitest/ui": "^4.0.18",
     "babel-eslint": "10.1.0",
-    "babel-loader": "9.1.2",
+    "babel-loader": "10.1.0",
     "babel-preset-minify": "0.5.2",
     "czg": "1.12.0",
     "eslint": "8.57.1",

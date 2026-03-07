@@ -15,6 +15,10 @@
           {
             "type": "command",
             "command": "npm test"
+          },
+          {
+            "type": "command",
+            "command": "npm run test:tsc"
           }
         ]
       }

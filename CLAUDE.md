@@ -2,7 +2,7 @@
 
 React hooks library for mount state tracking and AbortController cleanup.
 
-- Source: `src/use-is-mounted-ref.ts`, `src/use-abort-controller.ts`, `src/index.ts`
+- Source: `src/use-is-mounted-ref.ts`, `src/use-abort-controller.ts`, `src/use-abort-signal.ts`, `src/index.ts`
 - Tests: `src/__tests__/*.test.ts`
 - Build output: `dist/` (CJS + ESM via Rollup)
 

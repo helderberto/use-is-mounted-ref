@@ -1,7 +1,7 @@
 <div align="center">
   <h1>📦 use-is-mounted-ref</h1>
 
-  <p><strong>React Hooks for mount state tracking and auto-cleanup with AbortController</strong></p>
+  <p><strong>React Hooks for mount state tracking and auto-cleanup with AbortController/AbortSignal</strong></p>
 
 <!-- prettier-ignore-start -->
 [![build][build-badge]][build]
@@ -36,8 +36,10 @@
 ## Motivation
 
 - Avoid memory leaks setting states when component are unmounted
-- Automatically cancel fetch requests on unmount with AbortController
+- Automatically cancel fetch requests on unmount with AbortController/AbortSignal
+- Auto-cleanup event listeners and timers with AbortSignal
 - Control when component is mounted
+- React Strict Mode compatible
 - Common error when setting state to unmounted component:
 
 ```js

@@ -34,16 +34,16 @@
 
 ## Motivation
 
-- Avoid memory leaks setting states when component are unmounted
-- Automatically cancel fetch requests on unmount with AbortController/AbortSignal
-- Auto-cleanup event listeners and timers with AbortSignal
-- Control when component is mounted
-- React Strict Mode compatible
-- Common error when setting state to unmounted component:
+Prevent memory leaks and auto-cancel async work when components unmount. React Strict Mode compatible.
+
+<details>
+<summary>Common warning this library helps avoid</summary>
 
 ```js
 Warning: Can only update a mounted or mounting component. This usually means you called setState, replaceState, or forceUpdate on an unmounted component. This is a no-op.
 ```
+
+</details>
 
 ## Installation
 
@@ -59,7 +59,8 @@ npm install use-is-mounted-ref
 
 Track component mount state with a ref.
 
-**Example: Avoid setState when unmounted**
+<details>
+<summary>Example: Avoid setState when unmounted</summary>
 
 ```jsx
 import { useState, useEffect } from 'react';
@@ -92,11 +93,14 @@ function App() {
 }
 ```
 
+</details>
+
 ### useAbortController
 
 Automatically abort fetch requests and async operations on unmount.
 
-**Example: Auto-cancel fetch on unmount**
+<details>
+<summary>Example: Auto-cancel fetch on unmount</summary>
 
 ```jsx
 import { useState, useEffect } from 'react';
@@ -123,11 +127,14 @@ function App() {
 }
 ```
 
+</details>
+
 ### useAbortSignal
 
 Returns an `AbortSignal` that automatically aborts on unmount. Simpler API for the most common use case — you usually only need the signal, not the full controller.
 
-**Example: Auto-cancel fetch on unmount**
+<details>
+<summary>Example: Auto-cancel fetch on unmount</summary>
 
 ```jsx
 import { useState, useEffect } from 'react';
@@ -152,7 +159,10 @@ function UserProfile({ id }) {
 }
 ```
 
-**Example: Auto-cleanup event listeners**
+</details>
+
+<details>
+<summary>Example: Auto-cleanup event listeners</summary>
 
 The `signal` option in `addEventListener` removes the listener automatically when aborted — no need for manual `removeEventListener`.
 
@@ -169,7 +179,10 @@ function useWindowResize(callback) {
 }
 ```
 
-**Example: Cancel timers on unmount**
+</details>
+
+<details>
+<summary>Example: Cancel timers on unmount</summary>
 
 ```jsx
 import { useEffect } from 'react';
@@ -185,7 +198,10 @@ function useDelayedAction(action, delay) {
 }
 ```
 
-**Example: Combine both hooks**
+</details>
+
+<details>
+<summary>Example: Combine hooks</summary>
 
 ```jsx
 import { useState, useEffect } from 'react';
@@ -216,6 +232,8 @@ function App() {
   return state.loading ? 'Loading...' : 'Loaded!';
 }
 ```
+
+</details>
 
 ## Migration from v1 to v2
 

@@ -1,0 +1,4 @@
+{
+  "*": "prettier --ignore-unknown --write",
+  "src/**/*.{ts,js}": ["eslint --fix", "vitest related --run"]
+}

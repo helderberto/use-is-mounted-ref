@@ -1,12 +1,9 @@
 import { renderHook } from '@testing-library/react';
+import { StrictMode } from 'react';
 
 import { useAbortSignal } from '../use-abort-signal';
 
 describe('useAbortSignal', () => {
-  it('should be defined', () => {
-    expect(useAbortSignal).toBeDefined();
-  });
-
   it('should return an AbortSignal instance', () => {
     const { result } = renderHook(() => useAbortSignal());
     expect(result.current).toBeInstanceOf(AbortSignal);
@@ -37,6 +34,14 @@ describe('useAbortSignal', () => {
     unmount();
 
     expect(abortHandler).toHaveBeenCalled();
+  });
+
+  it('should provide a non-aborted signal in StrictMode', () => {
+    const { result } = renderHook(() => useAbortSignal(), {
+      wrapper: StrictMode,
+    });
+
+    expect(result.current.aborted).toBe(false);
   });
 
   it('should return a stable signal across renders', () => {

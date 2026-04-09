@@ -1,12 +1,9 @@
 import { renderHook } from '@testing-library/react';
+import { StrictMode } from 'react';
 
 import { useAbortController } from '../use-abort-controller';
 
 describe('useAbortController', () => {
-  it('should be defined', () => {
-    expect(useAbortController).toBeDefined();
-  });
-
   it('should return an AbortController instance', () => {
     const { result } = renderHook(() => useAbortController());
     expect(result.current).toBeInstanceOf(AbortController);
@@ -18,6 +15,15 @@ describe('useAbortController', () => {
     expect(result.current.signal.aborted).toBe(false);
   });
 
+  it('should return a stable controller across rerenders', () => {
+    const { result, rerender } = renderHook(() => useAbortController());
+    const firstController = result.current;
+
+    rerender();
+
+    expect(result.current).toBe(firstController);
+  });
+
   it('should abort when component unmounts', () => {
     const { result, unmount } = renderHook(() => useAbortController());
     const controller = result.current;
@@ -27,6 +33,14 @@ describe('useAbortController', () => {
     unmount();
 
     expect(controller.signal.aborted).toBe(true);
+  });
+
+  it('should provide a non-aborted controller in StrictMode', () => {
+    const { result } = renderHook(() => useAbortController(), {
+      wrapper: StrictMode,
+    });
+
+    expect(result.current.signal.aborted).toBe(false);
   });
 
   it('should call abort listener on unmount', () => {

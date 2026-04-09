@@ -6,9 +6,13 @@ React hooks library for mount state tracking and AbortController cleanup.
 - Tests: `src/__tests__/*.test.ts`
 - Build output: `dist/` (CJS + ESM via Rollup)
 
+## Git
+
+- Always run `git pull --rebase origin main` before pushing — semantic-release may have committed version bumps and CHANGELOG updates
+
 ## Skills
 
-- [testing](.claude/skills/testing/SKILL.md)
-- [lint](.claude/skills/lint/SKILL.md)
-- [coverage](.claude/skills/coverage/SKILL.md)
-- [tdd](.claude/skills/tdd/SKILL.md)
+- [testing](skills/testing/SKILL.md)
+- [lint](skills/lint/SKILL.md)
+- [coverage](skills/coverage/SKILL.md)
+- [tdd](skills/tdd/SKILL.md)

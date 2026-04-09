@@ -24,6 +24,7 @@
 - [Hooks](#hooks)
   - [useIsMountedRef](#useismountedref)
   - [useAbortController](#useabortcontroller)
+  - [useAbortSignal](#useabortsignal)
 - [Migration from v1 to v2](#migration-from-v1-to-v2)
 - [Component Lifecycle Overview](#component-lifecycle-overview)
 - [Contributing](#contributing)
@@ -118,6 +119,68 @@ function App() {
   }, [abortController]);
 
   return <div>{data ? 'Loaded!' : 'Loading...'}</div>;
+}
+```
+
+### useAbortSignal
+
+Returns an `AbortSignal` that automatically aborts on unmount. Simpler API for the most common use case — you usually only need the signal, not the full controller.
+
+**Example: Auto-cancel fetch on unmount**
+
+```jsx
+import { useState, useEffect } from 'react';
+import { useAbortSignal } from 'use-is-mounted-ref';
+
+function UserProfile({ id }) {
+  const signal = useAbortSignal();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    fetch(`/api/users/${id}`, { signal })
+      .then((res) => res.json())
+      .then(setUser)
+      .catch((err) => {
+        if (err.name !== 'AbortError') {
+          console.error(err);
+        }
+      });
+  }, [id, signal]);
+
+  return <div>{user?.name}</div>;
+}
+```
+
+**Example: Auto-cleanup event listeners**
+
+The `signal` option in `addEventListener` removes the listener automatically when aborted — no need for manual `removeEventListener`.
+
+```jsx
+import { useEffect } from 'react';
+import { useAbortSignal } from 'use-is-mounted-ref';
+
+function useWindowResize(callback) {
+  const signal = useAbortSignal();
+
+  useEffect(() => {
+    window.addEventListener('resize', callback, { signal });
+  }, [callback, signal]);
+}
+```
+
+**Example: Cancel timers on unmount**
+
+```jsx
+import { useEffect } from 'react';
+import { useAbortSignal } from 'use-is-mounted-ref';
+
+function useDelayedAction(action, delay) {
+  const signal = useAbortSignal();
+
+  useEffect(() => {
+    const id = setTimeout(action, delay);
+    signal.addEventListener('abort', () => clearTimeout(id));
+  }, [action, delay, signal]);
 }
 ```
 

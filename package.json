@@ -36,8 +36,10 @@
     "ref",
     "abort",
     "abortcontroller",
+    "abortsignal",
     "cleanup",
-    "memory-leak"
+    "memory-leak",
+    "strict-mode"
   ],
   "repository": {
     "type": "git",
@@ -48,7 +50,7 @@
   },
   "homepage": "https://github.com/helderberto/use-is-mounted-ref#readme",
   "peerDependencies": {
-    "react": ">=16.0.0"
+    "react": ">=16.8.0"
   },
   "devDependencies": {
     "@babel/core": "7.24.6",
@@ -62,6 +64,8 @@
     "@rollup/plugin-replace": "6.0.3",
     "@rollup/plugin-terser": "1.0.0",
     "@rollup/plugin-typescript": "12.2.0",
+    "@semantic-release/changelog": "6.0.3",
+    "@semantic-release/git": "10.0.1",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
@@ -89,6 +93,7 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "rollup": "4.59.0",
+    "semantic-release": "25.0.3",
     "tslib": "2.8.1",
     "typescript": "4.9.5",
     "vitest": "^4.0.18"
@@ -105,6 +110,23 @@
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
+    ]
+  },
+  "release": {
+    "branches": ["main"],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/github",
+      [
+        "@semantic-release/git",
+        {
+          "assets": ["package.json", "CHANGELOG.md"],
+          "message": "chore(release): ${nextRelease.version}"
+        }
+      ]
     ]
   }
 }

@@ -11,9 +11,9 @@ export function useAbortController(): AbortController {
 
   useEffect(() => {
     return () => {
-      controllerRef.current.abort();
+      controllerRef.current!.abort();
     };
   }, []);
 
-  return controllerRef.current;
+  return controllerRef.current!;
 }

@@ -1,26 +1,24 @@
 module.exports = {
   env: {
     browser: true,
-    es6: true,
+    es2018: true,
   },
-  parser: 'babel-eslint',
-  extends: ['plugin:react/recommended', 'airbnb', 'prettier', 'prettier/react', 'plugin:vitest/recommended'],
-  globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
-  },
+  parser: '@typescript-eslint/parser',
+  extends: ['plugin:react/recommended', 'prettier', 'plugin:vitest/recommended'],
   parserOptions: {
-    ecmaVersion: 6,
+    ecmaVersion: 2018,
     ecmaFeatures: {
       jsx: true,
     },
   },
-  plugins: ['react', 'prettier', 'vitest'],
+  plugins: ['react', '@typescript-eslint', 'prettier', 'vitest'],
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   rules: {
     'react/jsx-filename-extension': 'off',
-    'import/extensions': 'off',
-    'import/no-unresolved': 'off',
-    'no-return-assign': 'off',
     'prettier/prettier': 'error',
   },
 };

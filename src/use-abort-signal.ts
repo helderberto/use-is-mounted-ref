@@ -11,9 +11,9 @@ export function useAbortSignal(): AbortSignal {
 
   useEffect(() => {
     return () => {
-      controllerRef.current.abort();
+      controllerRef.current!.abort();
     };
   }, []);
 
-  return controllerRef.current.signal;
+  return controllerRef.current!.signal;
 }

@@ -2,16 +2,17 @@
   "compilerOptions": {
     "declaration": true,
     "declarationDir": "./dist",
+    "rootDir": "./src",
     "declarationMap": true,
     "esModuleInterop": true,
     "jsx": "react",
-    "lib": ["es6"],
+    "lib": ["es2018", "dom"],
     "noEmit": true,
     "noImplicitAny": false,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "target": "es5"
+    "target": "es2018"
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules", "**/__tests__"]

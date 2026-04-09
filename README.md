@@ -26,7 +26,6 @@
   - [useAbortController](#useabortcontroller)
   - [useAbortSignal](#useabortsignal)
 - [Migration from v1 to v2](#migration-from-v1-to-v2)
-- [Component Lifecycle Overview](#component-lifecycle-overview)
 - [Contributing](#contributing)
 - [Bugs and Sugestions](#bugs-and-sugestions)
 - [License](#license)
@@ -231,30 +230,6 @@ New hook available:
 
 ```js
 import { useAbortController } from 'use-is-mounted-ref';
-```
-
-## Component Lifecycle Overview
-
-```mermaid
-flowchart TD
-    subgraph "Component Lifecycle"
-        direction TB
-        A1["Component Mounted"] --> A2["useIsMountedRef Hook"]
-        A2 --> B1["useRef(false)"]
-        B1 --> C1["useEffect Hook"]
-        C1 --> D1["isMountedRef.current = true"]
-        
-        C1 --> E1["Component Unmounted"]
-        E1 --> F1["Cleanup function"]
-        F1 --> G1["isMountedRef.current = false"]
-    end
-    
-    subgraph "Usage in Component"
-        H1["Check if Component is Mounted"]
-        H1 --> I1{isMountedRef.current ?}
-        I1 -- "True" --> J1["Perform Mounted Actions"]
-        I1 -- "False" --> K1["Do Not Perform Actions"]
-    end
 ```
 
 ## Contributing

@@ -35,6 +35,7 @@ Packaging changes: also run `npx publint` and `npx @arethetypeswrong/cli --pack 
 - Atomic Conventional Commits. commitlint enforces them
 - `docs`, `refactor`, `perf`, `style`, `build` cut a patch release. `chore`, `ci`, `test` don't
 - semantic-release owns `version` and `CHANGELOG.md`. Never edit them by hand
+- npm publishes through trusted publishing (GitHub OIDC). No `NPM_TOKEN` secret
 - Run `git pull --rebase origin main` before pushing
 - Breaking packaging changes (`exports` map, `.mjs`) wait for a major
 

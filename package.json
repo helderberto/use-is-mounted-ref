@@ -15,8 +15,8 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "lint": "eslint --max-warnings=0",
-    "lint:fix": "npm run lint --fix",
+    "lint": "eslint --ext .ts,.tsx --max-warnings=0 src",
+    "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write 'src/**/*.{js,ts,tsx}'",
     "build": "rm -fr ./dist && vite build && tsc --emitDeclarationOnly --noEmit false",
     "test": "vitest run",

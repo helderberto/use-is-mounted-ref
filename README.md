@@ -1,7 +1,7 @@
 <div align="center">
-  <h1>📦 use-is-mounted-ref</h1>
+  <h1>use-is-mounted-ref</h1>
 
-  <p><strong>React Hooks for mount state tracking and auto-cleanup with AbortController/AbortSignal</strong></p>
+  <p><strong>React hooks that cancel async work when a component unmounts.</strong></p>
 
 <!-- prettier-ignore-start -->
 [![build][build-badge]][build]
@@ -14,249 +14,128 @@
 
 ---
 
-## Table of Contents
+## Why
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+Work started from an event handler outlives the component. A request, listener or timer keeps running after unmount and can update stale state.
 
-- [Motivation](#motivation)
-- [Installation](#installation)
-- [Hooks](#hooks)
-  - [useIsMountedRef](#useismountedref)
-  - [useAbortController](#useabortcontroller)
-  - [useAbortSignal](#useabortsignal)
-- [Migration from v1 to v2](#migration-from-v1-to-v2)
-- [Contributing](#contributing)
-- [Bugs and Sugestions](#bugs-and-sugestions)
-- [License](#license)
+These hooks give you an `AbortSignal` tied to the component's lifetime. They are safe under React Strict Mode.
 
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-## Motivation
-
-Prevent memory leaks and auto-cancel async work when components unmount. React Strict Mode compatible.
-
-<details>
-<summary>Common warning this library helps avoid</summary>
-
-```js
-Warning: Can only update a mounted or mounting component. This usually means you called setState, replaceState, or forceUpdate on an unmounted component. This is a no-op.
-```
-
-</details>
-
-## Installation
+## Install
 
 ```bash
-yarn add use-is-mounted-ref
-# or
 npm install use-is-mounted-ref
 ```
 
-## Hooks
+Requires React 16.8 or later. CI tests React 18 and 19.
 
-### useIsMountedRef
-
-Track component mount state with a ref.
-
-<details>
-<summary>Example: Avoid setState when unmounted</summary>
+## Quick start
 
 ```jsx
-import { useState, useEffect } from 'react';
-import { useIsMountedRef } from 'use-is-mounted-ref';
+import { useAbortSignal } from 'use-is-mounted-ref';
 
-function App() {
-  const isMountedRef = useIsMountedRef();
-  const [state, setState] = useState({
-    loading: true,
-    error: false,
-    data: [],
-  });
+function SaveButton({ data }) {
+  const signal = useAbortSignal();
 
-  useEffect(() => {
-    fetch('https://api.example.com/data')
-      .then((response) => response.json())
-      .then(({ data }) => {
-        if (isMountedRef.current) {
-          setState((prev) => ({ ...prev, loading: false, data }));
-        }
-      })
-      .catch((err) => {
-        if (isMountedRef.current) {
-          setState((prev) => ({ ...prev, loading: false, error: true }));
-        }
-      });
-  }, [isMountedRef]);
+  const save = () =>
+    fetch('/api/save', { method: 'POST', body: JSON.stringify(data), signal }).catch((err) => {
+      if (err.name !== 'AbortError') throw err;
+    });
 
-  return state.loading ? 'Loading...' : 'Found Data!';
+  return <button onClick={save}>Save</button>;
 }
 ```
 
-</details>
+If the component unmounts mid-request, the request is aborted.
 
-### useAbortController
+## API
 
-Automatically abort fetch requests and async operations on unmount.
+| Hook                   | Returns                         | Aborts / flips when |
+| ---------------------- | ------------------------------- | ------------------- |
+| `useAbortSignal()`     | `AbortSignal`                   | Component unmounts  |
+| `useAbortController()` | `AbortController`               | Component unmounts  |
+| `useIsMountedRef()`    | `{ readonly current: boolean }` | Component unmounts  |
 
-<details>
-<summary>Example: Auto-cancel fetch on unmount</summary>
-
-```jsx
-import { useState, useEffect } from 'react';
-import { useAbortController } from 'use-is-mounted-ref';
-
-function App() {
-  const abortController = useAbortController();
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetch('https://api.example.com/data', {
-      signal: abortController.signal,
-    })
-      .then((response) => response.json())
-      .then(setData)
-      .catch((err) => {
-        if (err.name !== 'AbortError') {
-          console.error(err);
-        }
-      });
-  }, [abortController]);
-
-  return <div>{data ? 'Loaded!' : 'Loading...'}</div>;
-}
-```
-
-</details>
+All three return a stable value across renders.
 
 ### useAbortSignal
 
-Returns an `AbortSignal` that automatically aborts on unmount. Simpler API for the most common use case — you usually only need the signal, not the full controller.
+Use it when you only need the signal. This covers most cases.
+
+### useAbortController
+
+Use it when you also need to call `abort()` yourself, for example from a Cancel button.
 
 <details>
-<summary>Example: Auto-cancel fetch on unmount</summary>
+<summary>Example: cancel button</summary>
 
 ```jsx
-import { useState, useEffect } from 'react';
-import { useAbortSignal } from 'use-is-mounted-ref';
+import { useAbortController } from 'use-is-mounted-ref';
 
-function UserProfile({ id }) {
-  const signal = useAbortSignal();
+function Upload({ file }) {
+  const controller = useAbortController();
+
+  const upload = () => fetch('/api/upload', { method: 'POST', body: file, signal: controller.signal });
+
+  return (
+    <>
+      <button onClick={upload}>Upload</button>
+      <button onClick={() => controller.abort()}>Cancel</button>
+    </>
+  );
+}
+```
+
+Once aborted, the controller stays aborted until the component remounts.
+
+</details>
+
+### useIsMountedRef
+
+Use it for promises that cannot take a signal, such as some third-party SDKs.
+
+<details>
+<summary>Example: guard a non-abortable promise</summary>
+
+```jsx
+import { useState } from 'react';
+import { useIsMountedRef } from 'use-is-mounted-ref';
+
+function Profile({ sdk }) {
+  const isMountedRef = useIsMountedRef();
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    fetch(`/api/users/${id}`, { signal })
-      .then((res) => res.json())
-      .then(setUser)
-      .catch((err) => {
-        if (err.name !== 'AbortError') {
-          console.error(err);
-        }
-      });
-  }, [id, signal]);
+  const load = async () => {
+    const result = await sdk.getUser();
+    if (isMountedRef.current) setUser(result);
+  };
 
-  return <div>{user?.name}</div>;
+  return <button onClick={load}>{user ? user.name : 'Load'}</button>;
 }
 ```
 
 </details>
 
-<details>
-<summary>Example: Auto-cleanup event listeners</summary>
+## Inside `useEffect`
 
-The `signal` option in `addEventListener` removes the listener automatically when aborted — no need for manual `removeEventListener`.
+These hooks abort only on unmount, not when effect dependencies change. For work keyed on props, create a controller per effect run:
 
 ```jsx
-import { useEffect } from 'react';
-import { useAbortSignal } from 'use-is-mounted-ref';
-
-function useWindowResize(callback) {
-  const signal = useAbortSignal();
-
-  useEffect(() => {
-    window.addEventListener('resize', callback, { signal });
-  }, [callback, signal]);
-}
+useEffect(() => {
+  const controller = new AbortController();
+  fetch(`/api/users/${id}`, { signal: controller.signal });
+  return () => controller.abort();
+}, [id]);
 ```
 
-</details>
+## Docs
 
-<details>
-<summary>Example: Cancel timers on unmount</summary>
-
-```jsx
-import { useEffect } from 'react';
-import { useAbortSignal } from 'use-is-mounted-ref';
-
-function useDelayedAction(action, delay) {
-  const signal = useAbortSignal();
-
-  useEffect(() => {
-    const id = setTimeout(action, delay);
-    signal.addEventListener('abort', () => clearTimeout(id));
-  }, [action, delay, signal]);
-}
-```
-
-</details>
-
-<details>
-<summary>Example: Combine hooks</summary>
-
-```jsx
-import { useState, useEffect } from 'react';
-import { useIsMountedRef, useAbortController } from 'use-is-mounted-ref';
-
-function App() {
-  const isMountedRef = useIsMountedRef();
-  const abortController = useAbortController();
-  const [state, setState] = useState({ loading: true, data: null });
-
-  useEffect(() => {
-    fetch('https://api.example.com/data', {
-      signal: abortController.signal,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (isMountedRef.current) {
-          setState({ loading: false, data });
-        }
-      })
-      .catch((err) => {
-        if (err.name !== 'AbortError' && isMountedRef.current) {
-          setState({ loading: false, data: null });
-        }
-      });
-  }, [abortController, isMountedRef]);
-
-  return state.loading ? 'Loading...' : 'Loaded!';
-}
-```
-
-</details>
-
-## Migration from v1 to v2
-
-**Breaking change:** Default export replaced with named exports.
-
-```diff
-- import useIsMountedRef from 'use-is-mounted-ref';
-+ import { useIsMountedRef } from 'use-is-mounted-ref';
-```
-
-New hook available:
-
-```js
-import { useAbortController } from 'use-is-mounted-ref';
-```
+- [Recipes](docs/recipes.md): listeners, timers, and more
+- [Migration](docs/migration.md): v1 to v2
+- [Changelog](CHANGELOG.md)
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Bugs and Sugestions
-
-Report bugs or do suggestions using the [issues](https://github.com/helderberto/use-is-mounted-ref/issues).
+See [CONTRIBUTING.md](CONTRIBUTING.md). Report bugs or suggest ideas in [issues](https://github.com/helderberto/use-is-mounted-ref/issues).
 
 ## License
 
@@ -268,7 +147,7 @@ Report bugs or do suggestions using the [issues](https://github.com/helderberto/
 [downloads-badge]: https://img.shields.io/npm/dm/use-is-mounted-ref.svg?style=flat-square
 [npmtrends]: http://www.npmtrends.com/use-is-mounted-ref
 [license-badge]: https://img.shields.io/npm/l/use-is-mounted-ref.svg?style=flat-square
-[license]: https://github.com/helderberto/use-is-mounted-ref/blob/master/LICENSE
+[license]: https://github.com/helderberto/use-is-mounted-ref/blob/main/LICENSE
 [build]: https://github.com/helderberto/use-is-mounted-ref/actions
 [build-badge]: https://github.com/helderberto/use-is-mounted-ref/actions/workflows/ci.yml/badge.svg
 <!-- prettier-ignore-end -->

@@ -6,7 +6,6 @@
   "version": "2.1.1",
   "main": "dist/use-is-mounted-ref.cjs.js",
   "module": "dist/use-is-mounted-ref.es.js",
-  "jsnext:main": "dist/use-is-mounted-ref.es.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
@@ -80,6 +79,7 @@
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "semantic-release": "25.0.3",
+    "terser": "5.51.2",
     "typescript": "6.0.2",
     "typescript-eslint": "8.71.2",
     "vite": "8.3.4",
@@ -137,5 +137,7 @@
         }
       ]
     ]
-  }
+  },
+  "type": "commonjs",
+  "sideEffects": false
 }

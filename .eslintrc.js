@@ -4,7 +4,13 @@ module.exports = {
     es2018: true,
   },
   parser: '@typescript-eslint/parser',
-  extends: ['plugin:react/recommended', 'prettier', 'plugin:vitest/recommended'],
+  extends: [
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
+    'plugin:vitest/recommended',
+  ],
   parserOptions: {
     ecmaVersion: 2018,
     ecmaFeatures: {

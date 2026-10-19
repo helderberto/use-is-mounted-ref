@@ -9,6 +9,8 @@ export function useAbortControllerLifecycle(): AbortController {
 
   useEffect(() => {
     if (controller.signal.aborted) {
+      // Strict Mode aborts on its simulated unmount, so swap in a live controller.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setController(new AbortController());
       return;
     }

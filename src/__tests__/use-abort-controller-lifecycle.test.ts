@@ -50,4 +50,15 @@ describe('useAbortControllerLifecycle', () => {
 
     expect(result.current.signal.aborted).toBe(false);
   });
+
+  it('should abort the live controller after Strict Mode unmount', () => {
+    const { result, unmount } = renderHook(() => useAbortControllerLifecycle(), {
+      wrapper: StrictMode,
+    });
+    const controller = result.current;
+
+    unmount();
+
+    expect(controller.signal.aborted).toBe(true);
+  });
 });

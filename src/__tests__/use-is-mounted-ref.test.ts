@@ -1,4 +1,5 @@
 import { renderHook } from '@testing-library/react';
+import { StrictMode } from 'react';
 
 import { useIsMountedRef } from '../use-is-mounted-ref';
 
@@ -21,5 +22,16 @@ describe('useIsMountedRef', () => {
     const { result, unmount } = renderHook(() => useIsMountedRef());
     unmount();
     expect(result.current).toEqual({ current: false });
+  });
+
+  it('should be mounted after Strict Mode remount', () => {
+    const { result } = renderHook(() => useIsMountedRef(), { wrapper: StrictMode });
+    expect(result.current.current).toBe(true);
+  });
+
+  it('should be unmounted after Strict Mode unmount', () => {
+    const { result, unmount } = renderHook(() => useIsMountedRef(), { wrapper: StrictMode });
+    unmount();
+    expect(result.current.current).toBe(false);
   });
 });

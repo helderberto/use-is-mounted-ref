@@ -31,6 +31,7 @@ export default defineConfig({
       reporter: ['text', 'json', 'html'],
       include: ['src/**/*.ts'],
       exclude: ['src/**/*.test.ts', 'src/__tests__/**'],
+      thresholds: { 100: true },
     },
     include: ['src/__tests__/**/*.{test,spec}.{ts,tsx}'],
   },

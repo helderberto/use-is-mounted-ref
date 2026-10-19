@@ -18,7 +18,7 @@
     "lint": "eslint --max-warnings=0",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write 'src/**/*.{js,ts,tsx}'",
-    "build": "rm -fr ./dist && vite build && tsc --emitDeclarationOnly --noEmit false",
+    "build": "rm -fr ./dist && vite build && tsc -p tsconfig.build.json --emitDeclarationOnly --noEmit false",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",

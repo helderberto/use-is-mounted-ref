@@ -8,12 +8,13 @@
     "jsx": "react",
     "lib": ["es2018", "dom"],
     "noEmit": true,
-    "noImplicitAny": false,
+    "strict": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "target": "es2018"
+    "target": "es2018",
+    "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
   "include": ["./src/**/*"],
-  "exclude": ["node_modules", "**/__tests__"]
+  "exclude": ["node_modules"]
 }

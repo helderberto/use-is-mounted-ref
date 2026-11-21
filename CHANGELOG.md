@@ -1,3 +1,9 @@
+## [2.2.5](https://github.com/helderberto/use-is-mounted-ref/compare/v2.2.4...v2.2.5) (2026-11-21)
+
+### Build
+
+- replace npx with npm scripts and restructure PR template ([#1377](https://github.com/helderberto/use-is-mounted-ref/issues/1377)) ([5d21b60](https://github.com/helderberto/use-is-mounted-ref/commit/5d21b606b48847b33425036cdd028802f757e039))
+
 ## [2.2.4](https://github.com/helderberto/use-is-mounted-ref/compare/v2.2.3...v2.2.4) (2026-11-21)
 
 ### Documentation

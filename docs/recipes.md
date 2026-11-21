@@ -3,19 +3,19 @@
 Each recipe starts work outside an effect and cleans it up on unmount. For work inside `useEffect`, see [Inside useEffect](../README.md#inside-useeffect).
 
 <details>
-<summary>Fetch from an event handler</summary>
+<summary>Search as you type</summary>
 
 ```jsx
 import { useState } from 'react';
-import { useAbortSignal } from 'use-is-mounted-ref';
+import { useLatestAbortSignal } from 'use-is-mounted-ref';
 
 function Search() {
-  const signal = useAbortSignal();
+  const getSignal = useLatestAbortSignal();
   const [results, setResults] = useState([]);
 
   const search = async (query) => {
     try {
-      const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`, { signal });
+      const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`, { signal: getSignal() });
       setResults(await res.json());
     } catch (err) {
       if (err.name !== 'AbortError') throw err;
@@ -26,7 +26,7 @@ function Search() {
 }
 ```
 
-On unmount, the request aborts and `setResults` never runs.
+Each keystroke aborts the previous request, so a slow response for "ab" never overwrites results for "abc". On unmount, the last request aborts too.
 
 </details>
 

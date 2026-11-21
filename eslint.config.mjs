@@ -14,6 +14,18 @@ export default defineConfig([
     languageOptions: { globals: globals.browser },
   },
   {
+    files: ['src/**/*.ts'],
+    rules: {
+      'no-restricted-syntax': [
+        'error',
+        { selector: 'ExportAllDeclaration', message: 'Use named exports.' },
+        { selector: 'ExportDefaultDeclaration', message: 'Use named exports.' },
+        { selector: "ExportSpecifier[exported.name='default']", message: 'Use named exports.' },
+        { selector: 'ImportNamespaceSpecifier', message: 'Use named imports.' },
+      ],
+    },
+  },
+  {
     files: ['src/__tests__/**/*.ts'],
     extends: [vitest.configs.recommended],
     languageOptions: { globals: vitest.environments.env.globals },

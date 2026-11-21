@@ -1,3 +1,9 @@
+## [2.2.3](https://github.com/helderberto/use-is-mounted-ref/compare/v2.2.2...v2.2.3) (2026-11-21)
+
+### Documentation
+
+- restore Motivation section in README ([#1376](https://github.com/helderberto/use-is-mounted-ref/issues/1376)) ([7709838](https://github.com/helderberto/use-is-mounted-ref/commit/77098387ceb17465abded16122f38b94f5a64cdb))
+
 ## [2.2.2](https://github.com/helderberto/use-is-mounted-ref/compare/v2.2.1...v2.2.2) (2026-11-21)
 
 ### Build

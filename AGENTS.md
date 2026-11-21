@@ -15,7 +15,9 @@ React hooks that cancel async work on unmount: `useIsMountedRef`, `useAbortContr
 - Coverage stays at 100%. Vitest thresholds enforce it
 - Minimum code. No speculative options or abstractions
 - No comments, except a short non-obvious "why"
+- Exception: exported hooks get TSDoc with an `@example`, for editor hover
 - `strict` TypeScript. Tests are type-checked too
+- Named imports and exports only. No `export default`, `export *` or `import *`
 
 ## Dependencies
 

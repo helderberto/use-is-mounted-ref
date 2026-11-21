@@ -1,3 +1,9 @@
+# [2.2.0](https://github.com/helderberto/use-is-mounted-ref/compare/v2.1.4...v2.2.0) (2026-11-21)
+
+### Features
+
+- add useLatestAbortSignal ([efde668](https://github.com/helderberto/use-is-mounted-ref/commit/efde66880cda08088290562662287c59139e4d33))
+
 ## [2.1.4](https://github.com/helderberto/use-is-mounted-ref/compare/v2.1.3...v2.1.4) (2026-11-21)
 
 ## [2.1.3](https://github.com/helderberto/use-is-mounted-ref/compare/v2.1.2...v2.1.3) (2026-10-19)

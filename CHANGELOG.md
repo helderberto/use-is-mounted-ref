@@ -1,3 +1,9 @@
+## [2.2.2](https://github.com/helderberto/use-is-mounted-ref/compare/v2.2.1...v2.2.2) (2026-11-21)
+
+### Build
+
+- show docs and build commits in release notes ([214e35a](https://github.com/helderberto/use-is-mounted-ref/commit/214e35a5a394f67931a8af821ce2a7dc46431500))
+
 ## [2.2.1](https://github.com/helderberto/use-is-mounted-ref/compare/v2.2.0...v2.2.1) (2026-11-21)
 
 # [2.2.0](https://github.com/helderberto/use-is-mounted-ref/compare/v2.1.4...v2.2.0) (2026-11-21)

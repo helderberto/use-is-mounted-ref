@@ -56,119 +56,18 @@ If the component unmounts mid-request, the request is aborted.
 
 ## API
 
-| Hook                     | Returns                         | Aborts / flips when  |
-| ------------------------ | ------------------------------- | -------------------- |
-| `useAbortSignal()`       | `AbortSignal`                   | Component unmounts   |
-| `useAbortController()`   | `AbortController`               | Component unmounts   |
-| `useIsMountedRef()`      | `{ readonly current: boolean }` | Component unmounts   |
-| `useLatestAbortSignal()` | `() => AbortSignal`             | Next call or unmount |
+| Hook                                                         | Returns                         | Aborts / flips when  | Use it for                         |
+| ------------------------------------------------------------ | ------------------------------- | -------------------- | ---------------------------------- |
+| [`useAbortSignal()`](docs/api.md#useabortsignal)             | `AbortSignal`                   | Component unmounts   | Most cases                         |
+| [`useAbortController()`](docs/api.md#useabortcontroller)     | `AbortController`               | Component unmounts   | Calling `abort()` yourself         |
+| [`useLatestAbortSignal()`](docs/api.md#uselatestabortsignal) | `() => AbortSignal`             | Next call or unmount | Search as you type, latest wins    |
+| [`useIsMountedRef()`](docs/api.md#useismountedref)           | `{ readonly current: boolean }` | Component unmounts   | Promises that cannot take a signal |
 
-All four return a stable value across renders.
-
-### useAbortSignal
-
-Use it when you only need the signal. This covers most cases.
-
-### useAbortController
-
-Use it when you also need to call `abort()` yourself, for example from a Cancel button.
-
-<details>
-<summary>Example: cancel button</summary>
-
-```jsx
-import { useAbortController } from 'use-is-mounted-ref';
-
-function Upload({ file }) {
-  const controller = useAbortController();
-
-  const upload = () => fetch('/api/upload', { method: 'POST', body: file, signal: controller.signal });
-
-  return (
-    <>
-      <button onClick={upload}>Upload</button>
-      <button onClick={() => controller.abort()}>Cancel</button>
-    </>
-  );
-}
-```
-
-Once aborted, the controller stays aborted until the component remounts.
-
-</details>
-
-### useLatestAbortSignal
-
-Use it when a newer call should cancel the previous one, such as search as you type. Each `getSignal()` aborts the signal before it.
-
-<details>
-<summary>Example: search as you type</summary>
-
-```jsx
-import { useState } from 'react';
-import { useLatestAbortSignal } from 'use-is-mounted-ref';
-
-function Search() {
-  const getSignal = useLatestAbortSignal();
-  const [results, setResults] = useState([]);
-
-  const search = async (query) => {
-    try {
-      const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`, { signal: getSignal() });
-      setResults(await res.json());
-    } catch (err) {
-      if (err.name !== 'AbortError') throw err;
-    }
-  };
-
-  return <input onChange={(e) => search(e.target.value)} />;
-}
-```
-
-Only the latest request can call `setResults`. After unmount, `getSignal()` returns an aborted signal.
-
-</details>
-
-### useIsMountedRef
-
-Use it for promises that cannot take a signal, such as some third-party SDKs.
-
-<details>
-<summary>Example: guard a non-abortable promise</summary>
-
-```jsx
-import { useState } from 'react';
-import { useIsMountedRef } from 'use-is-mounted-ref';
-
-function Profile({ sdk }) {
-  const isMountedRef = useIsMountedRef();
-  const [user, setUser] = useState(null);
-
-  const load = async () => {
-    const result = await sdk.getUser();
-    if (isMountedRef.current) setUser(result);
-  };
-
-  return <button onClick={load}>{user ? user.name : 'Load'}</button>;
-}
-```
-
-</details>
-
-## Inside `useEffect`
-
-These hooks do not abort when effect dependencies change. For work keyed on props, create a controller per effect run:
-
-```jsx
-useEffect(() => {
-  const controller = new AbortController();
-  fetch(`/api/users/${id}`, { signal: controller.signal });
-  return () => controller.abort();
-}, [id]);
-```
+These hooks do not abort when effect dependencies change. See [Inside useEffect](docs/api.md#inside-useeffect).
 
 ## Docs
 
+- [API](docs/api.md): behavior and examples per hook
 - [Recipes](docs/recipes.md): listeners, timers, and more
 - [Migration](docs/migration.md): v1 to v2
 - [Changelog](CHANGELOG.md)

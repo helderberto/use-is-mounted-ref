@@ -30,7 +30,7 @@ React hooks that cancel async work on unmount: `useIsMountedRef`, `useAbortContr
 
 `npm test`, `npm run test:coverage`, `npm run lint`, `npm run typecheck`, `npm run build`
 
-Packaging changes: also run `npx publint` and `npx @arethetypeswrong/cli --pack .`
+Packaging changes: also run `npm run check:package`
 
 ## Git
 

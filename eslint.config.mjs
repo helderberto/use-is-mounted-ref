@@ -17,6 +17,7 @@ export default defineConfig([
     files: ['src/__tests__/**/*.ts'],
     extends: [vitest.configs.recommended],
     languageOptions: { globals: vitest.environments.env.globals },
+    rules: { 'vitest/expect-expect': ['error', { assertFunctionNames: ['expect', 'expectTypeOf'] }] },
   },
   prettierRecommended,
 ]);

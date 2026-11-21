@@ -1,6 +1,6 @@
 {
   "name": "use-is-mounted-ref",
-  "description": "📦 React Hooks for mount state tracking and auto-cleanup with AbortController.",
+  "description": "🧹 React hooks that abort async work on unmount or when a newer call starts. Strict Mode safe, zero dependencies.",
   "author": "Helder B. Berto <helder.burato@gmail.com> (https://helderberto.com/)",
   "license": "MIT",
   "version": "2.1.3",
@@ -39,7 +39,10 @@
     "abortsignal",
     "cleanup",
     "memory-leak",
-    "strict-mode"
+    "strict-mode",
+    "race-condition",
+    "cancel",
+    "fetch"
   ],
   "repository": {
     "type": "git",

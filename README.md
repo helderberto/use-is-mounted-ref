@@ -1,7 +1,7 @@
 <div align="center">
   <h1>use-is-mounted-ref</h1>
 
-  <p><strong>React hooks that cancel async work when a component unmounts.</strong></p>
+  <p><strong>React hooks that cancel async work on unmount, or when a newer call replaces it.</strong></p>
 
 <!-- prettier-ignore-start -->
 [![build][build-badge]][build]
@@ -16,9 +16,16 @@
 
 ## Why
 
-Work started from an event handler outlives the component. A request, listener or timer keeps running after unmount and can update stale state.
+Async work started from an event handler outlives the component. A request, listener or timer keeps running after unmount and updates stale state.
 
-These hooks give you an `AbortSignal` tied to the component's lifetime. They are safe under React Strict Mode.
+It also races itself. Type "ab" then "abc", and the slow "ab" response can land last and overwrite the right results.
+
+These hooks hand you an `AbortSignal` that aborts at the right moment:
+
+- On unmount, or when the next call starts
+- Safe under React Strict Mode
+- Typed, with hover docs in your editor
+- Zero dependencies, under 400 B gzipped
 
 ## Install
 
@@ -49,13 +56,14 @@ If the component unmounts mid-request, the request is aborted.
 
 ## API
 
-| Hook                   | Returns                         | Aborts / flips when |
-| ---------------------- | ------------------------------- | ------------------- |
-| `useAbortSignal()`     | `AbortSignal`                   | Component unmounts  |
-| `useAbortController()` | `AbortController`               | Component unmounts  |
-| `useIsMountedRef()`    | `{ readonly current: boolean }` | Component unmounts  |
+| Hook                     | Returns                         | Aborts / flips when  |
+| ------------------------ | ------------------------------- | -------------------- |
+| `useAbortSignal()`       | `AbortSignal`                   | Component unmounts   |
+| `useAbortController()`   | `AbortController`               | Component unmounts   |
+| `useIsMountedRef()`      | `{ readonly current: boolean }` | Component unmounts   |
+| `useLatestAbortSignal()` | `() => AbortSignal`             | Next call or unmount |
 
-All three return a stable value across renders.
+All four return a stable value across renders.
 
 ### useAbortSignal
 
@@ -89,6 +97,38 @@ Once aborted, the controller stays aborted until the component remounts.
 
 </details>
 
+### useLatestAbortSignal
+
+Use it when a newer call should cancel the previous one, such as search as you type. Each `getSignal()` aborts the signal before it.
+
+<details>
+<summary>Example: search as you type</summary>
+
+```jsx
+import { useState } from 'react';
+import { useLatestAbortSignal } from 'use-is-mounted-ref';
+
+function Search() {
+  const getSignal = useLatestAbortSignal();
+  const [results, setResults] = useState([]);
+
+  const search = async (query) => {
+    try {
+      const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`, { signal: getSignal() });
+      setResults(await res.json());
+    } catch (err) {
+      if (err.name !== 'AbortError') throw err;
+    }
+  };
+
+  return <input onChange={(e) => search(e.target.value)} />;
+}
+```
+
+Only the latest request can call `setResults`. After unmount, `getSignal()` returns an aborted signal.
+
+</details>
+
 ### useIsMountedRef
 
 Use it for promises that cannot take a signal, such as some third-party SDKs.
@@ -117,7 +157,7 @@ function Profile({ sdk }) {
 
 ## Inside `useEffect`
 
-These hooks abort only on unmount, not when effect dependencies change. For work keyed on props, create a controller per effect run:
+These hooks do not abort when effect dependencies change. For work keyed on props, create a controller per effect run:
 
 ```jsx
 useEffect(() => {

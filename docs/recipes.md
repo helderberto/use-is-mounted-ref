@@ -1,34 +1,6 @@
 # Recipes
 
-Each recipe starts work outside an effect and cleans it up on unmount. For work inside `useEffect`, see [Inside useEffect](../README.md#inside-useeffect).
-
-<details>
-<summary>Search as you type</summary>
-
-```jsx
-import { useState } from 'react';
-import { useLatestAbortSignal } from 'use-is-mounted-ref';
-
-function Search() {
-  const getSignal = useLatestAbortSignal();
-  const [results, setResults] = useState([]);
-
-  const search = async (query) => {
-    try {
-      const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`, { signal: getSignal() });
-      setResults(await res.json());
-    } catch (err) {
-      if (err.name !== 'AbortError') throw err;
-    }
-  };
-
-  return <input onChange={(e) => search(e.target.value)} />;
-}
-```
-
-Each keystroke aborts the previous request, so a slow response for "ab" never overwrites results for "abc". On unmount, the last request aborts too.
-
-</details>
+Each recipe starts work outside an effect and cleans it up on unmount. For work inside `useEffect`, see [Inside useEffect](api.md#inside-useeffect). For search as you type, see [useLatestAbortSignal](api.md#uselatestabortsignal).
 
 <details>
 <summary>Listeners added from a handler</summary>

@@ -9,10 +9,10 @@ The default export became a named export.
 + import { useIsMountedRef } from 'use-is-mounted-ref';
 ```
 
-v2 also adds two hooks. Nothing else changed.
+v2 also adds three hooks. Nothing else changed.
 
 ```js
-import { useAbortController, useAbortSignal } from 'use-is-mounted-ref';
+import { useAbortController, useAbortSignal, useLatestAbortSignal } from 'use-is-mounted-ref';
 ```
 
-`useAbortSignal` arrived in 2.1.0.
+`useAbortSignal` arrived in 2.1.0, `useLatestAbortSignal` in 2.2.0.

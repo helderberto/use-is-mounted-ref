@@ -27,7 +27,9 @@
     "commit": "czg",
     "prepublishOnly": "npm run build",
     "prepare": "husky",
-    "check:package": "publint && attw --pack ."
+    "check:package": "publint && attw --pack .",
+    "lint:staged": "lint-staged",
+    "lint:commit": "commitlint --edit"
   },
   "keywords": [
     "react",

@@ -65,6 +65,32 @@ If the component unmounts mid-request, the request is aborted.
 
 These hooks do not abort when effect dependencies change. See [Inside useEffect](docs/api.md#inside-useeffect).
 
+## Motivation
+
+I built this library to fix one problem: updating state after a component unmounts. Before React 18, that logged this warning:
+
+```
+Warning: Can't perform a React state update on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in a useEffect cleanup function.
+```
+
+The first hook, `useIsMountedRef`, fixed it by skipping the update once the component was gone:
+
+```jsx
+const isMountedRef = useIsMountedRef();
+
+const load = async () => {
+  const user = await sdk.getUser();
+  if (isMountedRef.current) {
+    setUser(user);
+  }
+};
+```
+
+The library then grew to cover related problems:
+
+- The guard skips the update, but the request keeps running. `useAbortSignal` and `useAbortController` cancel the work itself.
+- Fast calls race, and a stale response can land last. `useLatestAbortSignal` aborts the previous call.
+
 ## Docs
 
 - [API](docs/api.md): behavior and examples per hook

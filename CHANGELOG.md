@@ -1,3 +1,9 @@
+## [2.2.4](https://github.com/helderberto/use-is-mounted-ref/compare/v2.2.3...v2.2.4) (2026-11-21)
+
+### Documentation
+
+- move Motivation after Why in README ([#1378](https://github.com/helderberto/use-is-mounted-ref/issues/1378)) ([c461013](https://github.com/helderberto/use-is-mounted-ref/commit/c461013a1e9788a596dcc32ed934a178cf44ae43))
+
 ## [2.2.3](https://github.com/helderberto/use-is-mounted-ref/compare/v2.2.2...v2.2.3) (2026-11-21)
 
 ### Documentation

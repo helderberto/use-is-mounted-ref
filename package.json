@@ -68,6 +68,7 @@
     "@vitest/coverage-v8": "5.0.5",
     "@vitest/eslint-plugin": "1.6.27",
     "@vitest/ui": "5.0.5",
+    "conventional-changelog-conventionalcommits": "9.3.1",
     "czg": "1.14.0",
     "eslint": "10.13.0",
     "eslint-config-prettier": "10.1.8",
@@ -125,7 +126,60 @@
           ]
         }
       ],
-      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "conventionalcommits",
+          "presetConfig": {
+            "types": [
+              {
+                "type": "feat",
+                "section": "Features"
+              },
+              {
+                "type": "fix",
+                "section": "Bug Fixes"
+              },
+              {
+                "type": "perf",
+                "section": "Performance"
+              },
+              {
+                "type": "revert",
+                "section": "Reverts"
+              },
+              {
+                "type": "refactor",
+                "section": "Refactoring"
+              },
+              {
+                "type": "docs",
+                "section": "Documentation"
+              },
+              {
+                "type": "build",
+                "section": "Build"
+              },
+              {
+                "type": "style",
+                "section": "Styles"
+              },
+              {
+                "type": "chore",
+                "hidden": true
+              },
+              {
+                "type": "ci",
+                "hidden": true
+              },
+              {
+                "type": "test",
+                "hidden": true
+              }
+            ]
+          }
+        }
+      ],
       "@semantic-release/changelog",
       "@semantic-release/npm",
       "@semantic-release/github",

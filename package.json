@@ -88,7 +88,7 @@
     "publint": "0.3.25",
     "react": "19.3.1",
     "react-dom": "19.3.1",
-    "semantic-release": "25.0.9",
+    "semantic-release": "26.0.1",
     "terser": "5.51.2",
     "typescript": "6.0.2",
     "typescript-eslint": "8.71.2",

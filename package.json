@@ -75,7 +75,7 @@
     "@vitest/ui": "5.0.5",
     "conventional-changelog-conventionalcommits": "9.3.1",
     "czg": "1.14.0",
-    "eslint": "10.13.0",
+    "eslint": "10.15.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-prettier": "5.5.7",
     "eslint-plugin-react-hooks": "7.1.1",
